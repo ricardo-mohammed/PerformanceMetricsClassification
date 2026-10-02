@@ -1,5 +1,7 @@
 # Performance Metrics Classification Workshop
 
+> Note: We created a new notebook for the solution and documented the talking points at the end of that notebook. This README preserves the same workshop guidance in a concise summary for quick reference and setup.
+
 This repository contains a hands-on workshop about binary classification, model evaluation, and the practical meaning of performance metrics. The main notebook uses MNIST images to classify whether an image is a handwritten `5`, then applies the same reasoning to a Fashion-MNIST comparison and several real-world decision scenarios.
 
 The completed workshop is in [notebooks/PerformanceMetricsClassification-V1.ipynb](notebooks/PerformanceMetricsClassification-V1.ipynb). It follows all 13 "To the student" sections from the instructor material and moves from classifier fundamentals to threshold selection, precision-recall analysis, ROC curves, and a Random Forest comparison.
