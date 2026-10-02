@@ -6,19 +6,19 @@ The completed workshop is in [notebooks/PerformanceMetricsClassification-V1.ipyn
 
 ## Workshop insights
 
-### Classification is a decision process
+### To the student / Talking points 1 — Classification is a decision process
 
 A classifier learns patterns from labeled examples and uses those patterns to assign a label to new, unseen data. For MNIST, each image is represented by 784 grayscale pixel features. The model learns a decision rule for separating images of the digit `5` from all other digits.
 
 The positive class must be defined explicitly. Here, `True` means "the image is a 5" and `False` means "the image is not a 5". That definition determines how the confusion matrix and every positive-class metric should be interpreted.
 
-### Validation must reflect how the model will be used
+### To the student / Talking points 2 — Validation must reflect how the model will be used
 
 Cross-validation gives a more reliable estimate than a single train/test split, but only when each validation prediction is produced by a model that did not train on that sample. The notebook therefore uses stratified folds and out-of-fold predictions for evaluation and for threshold analysis. Reusing training predictions would leak information and make the metrics look better than they really are.
 
 The `DummyClassifier` is a useful baseline: a sophisticated model should be compared with a simple strategy, not judged in isolation. The notebook also compares an SGD classifier with a Random Forest while keeping the validation procedure consistent.
 
-### Accuracy can hide the errors that matter
+### To the student / Talking points 3 — Accuracy can hide the errors that matter
 
 The confusion matrix separates predictions into true negatives, false positives, false negatives, and true positives. This is more informative than accuracy when the positive class is rare. In the security-drone example, 494 correct decisions out of 500 gives 98.8% accuracy, but the system still misses 2 of 10 actual intrusions, giving 80% recall.
 
@@ -32,11 +32,11 @@ The lesson is to choose metrics according to the consequences of errors:
 
 F1 is the harmonic mean of precision and recall, so it penalizes an imbalance between them. It ignores true negatives and does not encode unequal error costs; it is not automatically the right metric for every application.
 
-### Metric choice depends on the action
+### To the student / Talking points 4 — Metric choice depends on the action
 
 Medical pre-screening and security-alert triage generally prioritize recall because missed cases can be dangerous and additional false positives can be reviewed. A system that automatically deletes suspected spam or recommends only costly investment actions may prioritize precision because false positives are expensive. The right choice depends on what happens after a prediction, not on a universal ranking of metrics.
 
-### Thresholds expose the precision-recall tradeoff
+### To the student / Talking points 5 — Thresholds expose the precision-recall tradeoff
 
 The model's score is converted into a class prediction using a decision threshold. Raising the threshold makes the classifier more conservative: it predicts fewer positives, which usually improves precision while reducing recall. Lowering it makes the classifier more permissive: recall usually rises while precision falls.
 
